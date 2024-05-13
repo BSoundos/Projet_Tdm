@@ -10,4 +10,22 @@ const getAllParkings = async (req, res) => {
   }
 };
 
-module.exports = { getAllParkings };
+// Get a parking by ID
+const getParkingById = async (req, res) => {
+  const { parkingId } = req.params; // Extract the ID from the request parameters
+
+  try {
+    const parking = await Parking.findByPk(parkingId);
+
+    if (parking) {
+      res.json(parking);
+    } else {
+      res.status(404).json({ error: 'Parking not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
+
+// Export the getAllParkings and getParkingById functions
+module.exports = { getAllParkings, getParkingById };
