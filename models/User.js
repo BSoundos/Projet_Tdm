@@ -19,6 +19,10 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  token: {  // New field for storing FCM tokens
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
 });
 
 module.exports = User;

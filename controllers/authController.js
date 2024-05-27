@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 const register = async (req, res) => {
   try {
-    const { email, password, firstName, lastName } = req.body;
+    const { email, password, firstName, lastName} = req.body;
     console.log(req.body);
     console.log( email, password, firstName, lastName);
     // Check if the email already exists

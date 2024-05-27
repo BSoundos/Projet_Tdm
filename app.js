@@ -5,6 +5,7 @@ const sequelize = require('./config/database');  // Database connection
 const parkingRoutes = require('./routes/parkingRoutes');  // Parking routes
 const reservationRoutes = require('./routes/reservationRoutes');  // Reservation routes
 const authRoutes = require('./routes/authRoutes');  // Auth routes
+const notifRoutes = require('./routes/notifRoutes');  // notif routes
 const path = require('path');
 
 dotenv.config();  // Load environment variables from .env
@@ -33,9 +34,12 @@ sequelize.sync();
 app.use('/parkings', parkingRoutes);
 app.use('/reservations', reservationRoutes);
 app.use('/auth', authRoutes);
+app.use('/notif', notifRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
