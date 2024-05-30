@@ -19,6 +19,11 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  googleId: {
+    type: DataTypes.STRING,
+    unique: true,
+    allowNull: true,
+  },
   token: {  // New field for storing FCM tokens
     type: DataTypes.STRING,
     allowNull: true,

@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/User');
 
 const register = async (req, res) => {
@@ -63,5 +64,17 @@ const login = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+const checkEmailExists = async (req, res) => {
+  try {
+    const { email } = req.body;
+    const existingUser = await User.findOne({ where: { email } });
+    const emailExists = !!existingUser; // Convertir en booléen
+    res.json({ exists: emailExists });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};
 
-module.exports = { register, login };
+
+module.exports = { register, login,checkEmailExists};
